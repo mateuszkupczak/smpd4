@@ -1,0 +1,318 @@
+Version: 2.0
+
+#########################
+# Alternatives Section
+#
+
+Alternatives: &alternatives
+# Here, we list all the alternatives, together with their attributes. 
+# We can use these attributes later in the file when defining 
+# preferenceFunctions. The attributes can be quantitative or 
+# qualitative.
+  Samsung Chef Collection RB41J7839S4:
+    cooler_storage_volume: 276
+    freezer_storage_volume: 130
+    price: 3399
+    colour: Silver Paint
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 17
+    rapid_cooling: Yes
+    rapid_freezing: Yes
+  Samsung RB37J5925SS:
+    cooler_storage_volume: 262
+    freezer_storage_volume: 98
+    price: 2099
+    colour: Silver Paint
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 18
+    rapid_cooling: No
+    rapid_freezing: Yes
+  Indesit LR6 S1 S:
+    cooler_storage_volume: 196
+    freezer_storage_volume: 75
+    price: 899
+    colour: Silver
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 28
+    rapid_cooling: No
+    rapid_freezing: No
+  Samsung RB29FSRNDSA:
+    cooler_storage_volume: 192
+    freezer_storage_volume: 98
+    price: 1399
+    colour: Metallic Graphite
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 21
+    rapid_cooling: No
+    rapid_freezing: Yes
+  Samsung RB31FERNCSA:
+    cooler_storage_volume: 206
+    freezer_storage_volume: 98
+    price: 1799
+    colour: Metallic Graphite
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 24
+    rapid_cooling: No
+    rapid_freezing: Yes
+  Indesit LR8 S2 X B:
+    cooler_storage_volume: 228
+    freezer_storage_volume: 111
+    price: 1199
+    colour: Grey
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 24
+    rapid_cooling: No
+    rapid_freezing: No
+  Samsung RB29FERNCSS:
+    cooler_storage_volume: 188
+    freezer_storage_volume: 98
+    price: 1699
+    colour: Silver Paint
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 20
+    rapid_cooling: No
+    rapid_freezing: Yes
+  Bosch KGN39KL35:
+    cooler_storage_volume: 279
+    freezer_storage_volume: 87
+    price: 1999
+    colour: Silver
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 16
+    rapid_cooling: Yes
+    rapid_freezing: Yes
+  Samsung RB31FERNBSS:
+    cooler_storage_volume: 206
+    freezer_storage_volume: 98
+    price: 2199
+    colour: Silver Paint
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 24
+    rapid_cooling: No
+    rapid_freezing: Yes
+  Samsung RB34K6032SS:
+    cooler_storage_volume: 246
+    freezer_storage_volume: 98
+    price: 2099
+    colour: Silver Paint
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 16
+    rapid_cooling: Yes
+    rapid_freezing: Yes
+  Amica FK205.4:
+    cooler_storage_volume: 100
+    freezer_storage_volume: 56
+    price: 890
+    colour: White
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 20
+    rapid_cooling: No
+    rapid_freezing: No
+  Samsung RB31FDRNDSA:
+    cooler_storage_volume: 210
+    freezer_storage_volume: 98
+    price: 1899
+    colour: Metallic Graphite
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 20
+    rapid_cooling: No
+    rapid_freezing: Yes
+  Samsung RB31FERNDBC:
+    cooler_storage_volume: 212
+    freezer_storage_volume: 98
+    price: 1799
+    colour: Black
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 18
+    rapid_cooling: No
+    rapid_freezing: Yes
+  Samsung RS7528THCSP:
+    cooler_storage_volume: 361
+    freezer_storage_volume: 211
+    price: 3449
+    colour: Platinum Inox
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 12
+    rapid_cooling: Yes
+    rapid_freezing: Yes
+  Amica FK261.3XAA:
+    cooler_storage_volume: 166
+    freezer_storage_volume: 64
+    price: 1198
+    colour: Grey
+    hours_of_keeping_the_temperature_in_case_of_power_failure: 19
+    rapid_cooling: No
+    rapid_freezing: No
+
+#
+# End of Alternatives Section
+#####################################
+
+#####################################
+# Goal Section
+#
+
+
+Goal:
+# The goal spans a tree of criteria and the alternatives
+  name: Buy Fridge
+  description: >
+    This is a classic single decision maker problem. It models
+    the situation facing by a family that wants to buy a new fridge.
+  author: Mateusz Kupczak
+  decision-makers:
+    - Father: 0.45
+    - Mother: 0.45
+    - Child: 1/10
+  preferences:
+    # preferences are typically defined pairwise
+    # 1 means: A is equal to B
+    # 9 means: A is highly preferrable to B
+    # 1/9 means: B is highly preferrable to A
+    Father:
+      pairwise:
+        - [Performance, Quality, 2]
+        - [Performance, Style, 6]
+        - [Performance, Price, 1/3]
+        - [Quality, Style, 4]
+        - [Quality, Price, 1/6]
+        - [Style, Price, 1/9]
+    Mother:
+      pairwise:
+        - [Performance, Quality, 3]
+        - [Performance, Style, 7]
+        - [Performance, Price, 1]
+        - [Quality, Style, 7]
+        - [Quality, Price, 1]
+        - [Style, Price, 1/7]
+    Child:
+      pairwise:
+        - [Performance, Quality, 1/3]
+        - [Performance, Style, 1/9]
+        - [Performance, Price, 1/3]
+        - [Quality, Style, 1/9]
+        - [Quality, Price, 1]
+        - [Style, Price, 9]
+  children: 
+    Performance: 
+      preferences:
+        Father:
+          # KOMENTARZ: Metoda porównywania iloœci godzin utrzymania temperatury w przypadku braku zasilania w parach
+          pairwiseFunction: 
+              function(a1, a2) min(9, max(1/9, a2$hours_of_keeping_the_temperature_in_case_of_power_failure/a1$hours_of_keeping_the_temperature_in_case_of_power_failure))
+        Mother:
+          # KOMENTARZ: Ocena wydajnoœci na podstawie iloœci godzin utrzymania temperatury w przypadku braku zasilania
+          scoreFunction:
+              function(a) a$hours_of_keeping_the_temperature_in_case_of_power_failure
+        Child:
+          # KOMENTARZ: Ocena wydajnoœci na podstawie iloœci godzin utrzymania temperatury w przypadku braku zasilania
+          scoreFunction:
+              function(a) a$hours_of_keeping_the_temperature_in_case_of_power_failure
+      children: *alternatives
+    Quality: 
+      preferences:
+        Father:
+          # KOMENTARZ: Ocena jakoœci na podstawie, czy lodówka ma szybkie ch³odzenie/zamra¿anie
+          pairwiseFunction: >
+            QualityPreference <- function(a1, a2) {
+              if (a1$rapid_cooling == "No" & a1$rapid_freezing == "No") qualityscorea1 <- 1
+              else if (a1$rapid_cooling == "No" & a1$rapid_freezing == "Yes") qualityscorea1 <- 4
+              else if (a1$rapid_cooling == "Yes" & a1$rapid_freezing == "No") qualityscorea1 <- 6
+              else qualityscorea1 <- 9
+              if (a2$rapid_cooling == "No" & a2$rapid_freezing == "No") qualityscorea2 <- 1
+              else if (a2$rapid_cooling == "No" & a2$rapid_freezing == "Yes") qualityscorea2 <- 4
+              else if (a2$rapid_cooling == "Yes" & a2$rapid_freezing == "No") qualityscorea2 <- 6
+              else qualityscorea2 <- 9
+              if (qualityscorea1 < qualityscorea2) return (qualityscorea2/qualityscorea1)
+              return (qualityscorea1/qualityscorea2)
+            }
+        Mother:
+          # KOMENTARZ: Ocena jakoœci na podstawie, czy lodówka ma szybkie ch³odzenie/zamra¿anie (inne wartoœci dla 2 z 4 warunków)
+          pairwiseFunction: >
+            QualityPreference <- function(a1, a2) {
+              if (a1$rapid_cooling == "No" & a1$rapid_freezing == "No") qualityscorea1 <- 1
+              else if (a1$rapid_cooling == "No" & a1$rapid_freezing == "Yes") qualityscorea1 <- 3
+              else if (a1$rapid_cooling == "Yes" & a1$rapid_freezing == "No") qualityscorea1 <- 7
+              else qualityscorea1 <- 9
+              if (a2$rapid_cooling == "No" & a2$rapid_freezing == "No") qualityscorea2 <- 1
+              else if (a2$rapid_cooling == "No" & a2$rapid_freezing == "Yes") qualityscorea2 <- 3
+              else if (a2$rapid_cooling == "Yes" & a2$rapid_freezing == "No") qualityscorea2 <- 7
+              else qualityscorea2 <- 9
+              if (qualityscorea1 < qualityscorea2) return (qualityscorea2/qualityscorea1)
+              return (qualityscorea1/qualityscorea2)
+            }
+        Child:
+          # KOMENTARZ: Ocena jakoœci na podstawie, czy lodówka ma szybkie ch³odzenie/zamra¿anie („prostszy” odpowiednik)
+          pairwiseFunction: >
+            QualityPreference <- function(a1, a2) {
+              if (a1$rapid_cooling == "No" & a1$rapid_freezing == "No") qualityscorea1 <- 1
+              else qualityscorea1 <- 9
+              if (a2$rapid_cooling == "No" & a2$rapid_freezing == "No") qualityscorea2 <- 1
+              else qualityscorea2 <- 9
+              if (qualityscorea1 < qualityscorea2) return (qualityscorea2/qualityscorea1)
+              return (qualityscorea1/qualityscorea2)
+            }
+      children: *alternatives
+    Style: 
+      preferences:
+        Father:
+          # TODO: Ocena jakoœci na podstawie koloru. Brane kolory pod uwagê: Silver, Metallic Graphite, Black (wszystkie inne kolory oceniane s¹ na 3).
+          pairwiseFunction: >
+            StylePreference <- function(a1, a2) {
+              if (a1$colour == "Silver") stylescorea1 <- 6
+              else if (a1$colour == "Metallic Graphite") stylescorea1 <- 9
+              else if (a1$colour == "Black") stylescorea1 <- 7
+              else stylescorea1 <- 3
+              if (a2$colour == "Silver") stylescorea2 <- 6
+              else if (a2$colour == "Metallic Graphite") stylescorea2 <- 9
+              else if (a2$colour == "Black") stylescorea2 <- 7
+              else stylescorea2 <- 3
+              if (stylescorea1 < stylescorea2) return (stylescorea2/stylescorea1)
+              return (stylescorea1/stylescorea2)
+            }
+        Mother:
+          # TODO: Ocena jakoœci na podstawie koloru. Brane kolory pod uwagê: Silver, Silver Paint, Metallic Graphite, Grey, White, Black, Platinum Inox (wszystkie inne kolory oceniane s¹ na 5).
+          pairwiseFunction: >
+            StylePreference <- function(a1, a2) {
+              if (a1$colour == "Silver") stylescorea1 <- 7
+              else if (a1$colour == "Silver Paint") stylescorea1 <- 2
+              else if (a1$colour == "Metallic Graphite") stylescorea1 <- 4
+              else if (a1$colour == "Grey") stylescorea1 <- 2
+              else if (a1$colour == "White") stylescorea1 <- 9
+              else if (a1$colour == "Black") stylescorea1 <- 1
+              else if (a1$colour == "Platinum Inox") stylescorea1 <- 3
+              else stylescorea1 <- 5
+              if (a2$colour == "Silver") stylescorea2 <- 7
+              else if (a2$colour == "Silver Paint") stylescorea2 <- 2
+              else if (a2$colour == "Metallic Graphite") stylescorea2 <- 4
+              else if (a2$colour == "Grey") stylescorea2 <- 2
+              else if (a2$colour == "White") stylescorea2 <- 9
+              else if (a2$colour == "Black") stylescorea2 <- 1
+              else if (a2$colour == "Platinum Inox") stylescorea2 <- 3
+              else stylescorea2 <- 5
+              if (stylescorea1 < stylescorea2) return (stylescorea2/stylescorea1)
+              return (stylescorea1/stylescorea2)
+            }
+        Child:
+          # TODO: Ocena jakoœci na podstawie koloru. Brane kolory pod uwagê: Silver Paint, Metallic Graphite, White, Black (wszystkie inne kolory oceniane s¹ na 2).
+          pairwiseFunction: >
+            StylePreference <- function(a1, a2) {
+              if (a1$colour == "Silver Paint") stylescorea1 <- 4
+              else if (a1$colour == "Metallic Graphite") stylescorea1 <- 7
+              else if (a1$colour == "White") stylescorea1 <- 7
+              else if (a1$colour == "Black") stylescorea1 <- 9
+              else stylescorea1 <- 2
+              if (a2$colour == "Silver Paint") stylescorea2 <- 4
+              else if (a2$colour == "Metallic Graphite") stylescorea2 <- 7
+              else if (a2$colour == "White") stylescorea2 <- 7
+              else if (a2$colour == "Black") stylescorea2 <- 9
+              else stylescorea2 <- 2
+              if (stylescorea1 < stylescorea2) return (stylescorea2/stylescorea1)
+              return (stylescorea1/stylescorea2)
+            }
+      children: *alternatives
+    Price: 
+      preferences:
+        Father:
+          # KOMENTARZ: Metoda porównywania cen lodówek w parach
+          pairwiseFunction: 
+              function(a1, a2) min(9, max(1/9, a2$price/a1$price))
+        Mother:
+          # KOMENTARZ: Metoda porównywania cen lodówek w parach
+          pairwiseFunction: 
+              function(a1, a2) min(9, max(1/9, a2$price/a1$price))
+        Child:
+          # KOMENTARZ: Ocena ceny na podstawie ceny lodówki
+          scoreFunction:
+              function(a) a$price
+      children: *alternatives
+
+#
+# End of Goal Section
+#####################################
