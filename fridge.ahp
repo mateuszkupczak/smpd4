@@ -242,7 +242,7 @@ Goal:
     Style: 
       preferences:
         Father:
-          # TODO: Ocena jakoœci na podstawie koloru. Brane kolory pod uwagê: Silver, Metallic Graphite, Black (wszystkie inne kolory oceniane s¹ na 3).
+          # KOMENTARZ: Ocena stylu na podstawie koloru. Brane kolory pod uwagê: Silver, Metallic Graphite, Black (wszystkie inne kolory oceniane s¹ na 3).
           pairwiseFunction: >
             StylePreference <- function(a1, a2) {
               if (a1$colour == "Silver") stylescorea1 <- 6
@@ -257,7 +257,7 @@ Goal:
               return (stylescorea1/stylescorea2)
             }
         Mother:
-          # TODO: Ocena jakoœci na podstawie koloru. Brane kolory pod uwagê: Silver, Silver Paint, Metallic Graphite, Grey, White, Black, Platinum Inox (wszystkie inne kolory oceniane s¹ na 5).
+          # KOMENTARZ: Ocena stylu na podstawie koloru. Brane kolory pod uwagê: Silver, Silver Paint, Metallic Graphite, Grey, White, Black, Platinum Inox (wszystkie inne kolory oceniane s¹ na 5).
           pairwiseFunction: >
             StylePreference <- function(a1, a2) {
               if (a1$colour == "Silver") stylescorea1 <- 7
@@ -280,7 +280,7 @@ Goal:
               return (stylescorea1/stylescorea2)
             }
         Child:
-          # TODO: Ocena jakoœci na podstawie koloru. Brane kolory pod uwagê: Silver Paint, Metallic Graphite, White, Black (wszystkie inne kolory oceniane s¹ na 2).
+          # KOMENTARZ: Ocena stylu na podstawie koloru. Brane kolory pod uwagê: Silver Paint, Metallic Graphite, White, Black (wszystkie inne kolory oceniane s¹ na 2).
           pairwiseFunction: >
             StylePreference <- function(a1, a2) {
               if (a1$colour == "Silver Paint") stylescorea1 <- 4
